@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Smart City 3.0</string>
+    <string name="skip">skip</string>
+    <string name="enter_home">Enter Home</string>
+    <string name="network_setting">Network Setting</string>
+    <string name="guide_page_back_image">Guide Page Back Image</string>
 </resources>
