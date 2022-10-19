@@ -142,23 +142,33 @@ public class RegisterActivity extends AppCompatActivity {
                     break;
             }
 
-            registerNetworkRequests();
         });
 
         btn_register_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Objects.equals(registerRequestMsg, "操作成功")) {
-                    Toast.makeText(getApplicationContext(), "注册成功，请登录", Toast.LENGTH_SHORT).show();
-                    finish();
+                if (userName != null && passWord != null && phoneNumber != null && sex != null) {
+                    registerNetworkRequest();
                 } else {
-                    Toast.makeText(getApplicationContext(), registerRequestMsg, Toast.LENGTH_SHORT).show();
+                    if (userName == null) {
+                        Toast.makeText(getApplicationContext(), "请输入用户名", Toast.LENGTH_SHORT).show();
+                    }
+                    if (passWord == null) {
+                        Toast.makeText(getApplicationContext(), "请输入密码", Toast.LENGTH_SHORT).show();
+                    }
+                    if (phoneNumber == null) {
+                        Toast.makeText(getApplicationContext(), "请输入手机号", Toast.LENGTH_SHORT).show();
+                    }
+                    if (sex == null) {
+                        Toast.makeText(getApplicationContext(), "请选择性别", Toast.LENGTH_SHORT).show();
+                    }
                 }
+
             }
         });
     }
 
-    private void registerNetworkRequests() {
+    private void registerNetworkRequest() {
         Retrofit retrofit = new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
                 .baseUrl(BASE_URL)
@@ -176,13 +186,19 @@ public class RegisterActivity extends AppCompatActivity {
                     RegisterResult registerResultBody = response.body();
                     if (registerResultBody != null) {
                         registerRequestMsg = registerResultBody.getMsg();
+                        if (Objects.equals(registerRequestMsg, "操作成功")) {
+                            Toast.makeText(getApplicationContext(), "注册成功，请登录", Toast.LENGTH_SHORT).show();
+                            finish();
+                        } else {
+                            Toast.makeText(getApplicationContext(), registerRequestMsg, Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }
             }
 
             @Override
             public void onFailure(@NonNull Call<RegisterResult> call, @NonNull Throwable throwable) {
-
+                Log.d(TAG, "onFailure: " + throwable.getMessage());
             }
         });
     }

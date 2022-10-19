@@ -1,5 +1,6 @@
 package com.example.smartcity30;
 
+import com.example.smartcity30.bean.LoginResult;
 import com.example.smartcity30.bean.RegisterResult;
 
 import okhttp3.RequestBody;
@@ -13,5 +14,9 @@ public interface ApiService {
 
     @POST("/prod-api/api/register")
     Call<RegisterResult> register(@Body RequestBody body);
+
+    @POST("/prod-api/api/login")
+    Call<LoginResult> login(@Body RequestBody body);
+
 
 }
