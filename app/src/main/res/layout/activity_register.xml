@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".LoginActivity">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/tv_register_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="40dp"
+            android:text="@string/back_logo"
+            android:textSize="50sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:text="Register"
+            android:textSize="45sp" />
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:orientation="vertical"
+        android:padding="40dp">
+
+        <EditText
+            android:id="@+id/et_register_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="username"
+            android:drawableStart="@drawable/ic_baseline_account_circle_24"
+            android:hint=" Usermame"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/et_register_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:autofillHints="password"
+            android:drawableStart="@drawable/ic_baseline_lock_24"
+            android:hint=" Password"
+            android:inputType="numberPassword" />
+
+        <EditText
+            android:id="@+id/et_register_phone_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:autofillHints="phone"
+            android:drawableStart="@drawable/ic_baseline_phone_24"
+            android:hint=" Phone Number"
+            android:inputType="phone" />
+
+        <RadioGroup
+            android:id="@+id/rg_register_sex"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/gender"
+                android:textColor="@color/black"
+                android:textSize="17sp" />
+
+            <RadioButton
+                android:id="@+id/rb_register_man_0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Man" />
+
+            <RadioButton
+                android:id="@+id/rb_register_woman_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="Woman" />
+
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/btn_register_submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Submit"
+            android:textSize="17sp" />
+
+    </LinearLayout>
+
+</LinearLayout>

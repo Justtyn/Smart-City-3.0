@@ -10,7 +10,9 @@
         android:id="@+id/banner_guide"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:banner_auto_loop="false" />
+        app:banner_auto_loop="false"
+        app:banner_indicator_selected_color="@color/teal_200"
+        app:banner_infinite_loop="false" />
 
     <LinearLayout
         android:layout_width="wrap_content"
