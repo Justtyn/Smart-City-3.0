@@ -12,10 +12,17 @@ import android.view.ViewGroup;
 
 import com.example.smartcity30.ApiService;
 import com.example.smartcity30.R;
+import com.example.smartcity30.adapter.NewsFragmentBannerAdapter;
 import com.example.smartcity30.bean.NewsCategoryResult;
 import com.example.smartcity30.bean.NewsDetailsResult;
 import com.google.android.material.tabs.TabLayout;
 import com.youth.banner.Banner;
+import com.youth.banner.config.IndicatorConfig;
+import com.youth.banner.indicator.CircleIndicator;
+import com.youth.banner.transformer.ZoomOutPageTransformer;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -31,6 +38,12 @@ public class NewsFragment extends Fragment {
     public Banner banner_news_fragment_ad;
     public TabLayout tab_layout_news_fragment_tab;
     public ViewPager2 vp2_news_fragment;
+    public List<String> newsCategoryList = new ArrayList<>();
+    public List<Integer> newsTypeList = new ArrayList<>();
+    public List<NewsDetailsResult.RowsBean> newsDetailsDataList;
+    public List<String> newsDetailsImageUrlList = new ArrayList<>();
+    public NewsFragmentBannerAdapter newsFragmentBannerAdapter;
+    public List<Fragment> newsCategoryFragmentList = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -47,7 +60,7 @@ public class NewsFragment extends Fragment {
         tab_layout_news_fragment_tab = view.findViewById(R.id.tab_layout_news_fragment_tab);
         vp2_news_fragment = view.findViewById(R.id.vp2_news_fragment);
 
-        initBanner();
+
         initViewPager2AndTabLayout();
     }
 
@@ -60,9 +73,23 @@ public class NewsFragment extends Fragment {
         // 新闻分类请求
         Call<NewsCategoryResult> newsCategoryResultCall = apiService.getNewsCategory();
         newsCategoryResultCall.enqueue(new Callback<NewsCategoryResult>() {
+
+            public NewsCategoryResult newsCategoryResult;
+            public List<NewsCategoryResult.DataBean> newsCategoryDataList;
+
             @Override
             public void onResponse(@NonNull Call<NewsCategoryResult> call, @NonNull Response<NewsCategoryResult> response) {
+                if (response.code() == 200) {
+                    newsCategoryResult = response.body();
+                    if (newsCategoryResult != null) {
+                        newsCategoryDataList = newsCategoryResult.getData();
+                    }
 
+                    for (int i = 0; i < newsCategoryDataList.size(); i++) {
+                        newsCategoryList.add(newsCategoryDataList.get(i).getName());
+                        newsTypeList.add(newsCategoryDataList.get(i).getId());
+                    }
+                }
             }
 
             @Override
@@ -70,12 +97,25 @@ public class NewsFragment extends Fragment {
 
             }
         });
+
         // 新闻详情请求
         Call<NewsDetailsResult> newsDetailsResultCall = apiService.getNewsDetails();
         newsDetailsResultCall.enqueue(new Callback<NewsDetailsResult>() {
+
+            NewsDetailsResult newsDetailsResult;
+
             @Override
             public void onResponse(Call<NewsDetailsResult> call, Response<NewsDetailsResult> response) {
-
+                if (response.code() == 200) {
+                    newsDetailsResult = response.body();
+                    if (newsDetailsResult != null) {
+                        newsDetailsDataList = newsDetailsResult.getRows();
+                    }
+                    for (int i = 0; i < newsDetailsDataList.size(); i++) {
+                        newsDetailsImageUrlList.add(newsDetailsDataList.get(i).getCover());
+                    }
+                    initBanner();
+                }
             }
 
             @Override
@@ -83,14 +123,28 @@ public class NewsFragment extends Fragment {
 
             }
         });
-
     }
 
     private void initBanner() {
 
+        banner_news_fragment_ad.setAdapter(new NewsFragmentBannerAdapter(newsDetailsImageUrlList, newsDetailsDataList, requireActivity()));
+        // 给 banner 添加生命周期观察者 自动管理 banner 的生命周期
+        banner_news_fragment_ad.addBannerLifecycleObserver(requireActivity());
+//        // 设置 banner 轮播指示器
+//        banner_news_fragment_ad.setIndicator(new CircleIndicator(requireActivity()));
+//        // 设置指示器位置
+//        banner_news_fragment_ad.setIndicatorGravity(IndicatorConfig.Direction.CENTER);
+        // 设置 viewpager 的切换效果
+        banner_news_fragment_ad.addPageTransformer(new ZoomOutPageTransformer());
+        // 设置自动轮播
+        banner_news_fragment_ad.isAutoLoop(true);
+        banner_news_fragment_ad.setLoopTime(3000);
+        banner_news_fragment_ad.start();
+
     }
 
     private void initViewPager2AndTabLayout() {
+
 
     }
 }

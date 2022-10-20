@@ -9,7 +9,7 @@
     <com.youth.banner.Banner
         android:id="@+id/banner_news_fragment_ad"
         android:layout_width="match_parent"
-        android:layout_height="200dp" />
+        android:layout_height="180dp" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout_news_fragment_tab"
