@@ -50,7 +50,6 @@ public class ServiceFragment extends Fragment {
         sv_main_search = view.findViewById(R.id.sv_main_search);
         rv_main_fruit_list = view.findViewById(R.id.rv_main_fruit_list);
 
-
     }
 
     private void initRecyclerView() {

@@ -11,8 +11,15 @@
     <TextView
         android:id="@+id/tv_news_list_form_title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="35dp"
+        android:ellipsize="marquee"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:lines="1"
+        android:marqueeRepeatLimit="marquee_forever"
         android:padding="5dp"
+        android:scrollHorizontally="true"
+        android:singleLine="true"
         android:text="@string/this_is_news_title"
         android:textColor="@color/black"
         android:textSize="20sp" />
@@ -40,21 +47,25 @@
             <TextView
                 android:id="@+id/tv_news_list_form_content"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:padding="5dp"
+                android:layout_height="68dp"
+                android:lines="3"
+                android:paddingStart="5dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="5dp"
                 android:text="@string/this_is_news_content" />
 
             <TextView
                 android:id="@+id/tv_news_list_form_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:text="2022-10-20"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"                android:text="2022-10-20"
                 android:textSize="15sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
                 android:orientation="horizontal"
                 android:padding="5dp">
 

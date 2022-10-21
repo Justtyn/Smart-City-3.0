@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.view.LayoutInflater;
@@ -15,7 +16,14 @@ import com.example.smartcity30.R;
 import com.example.smartcity30.adapter.NewsFragmentBannerAdapter;
 import com.example.smartcity30.bean.NewsCategoryResult;
 import com.example.smartcity30.bean.NewsDetailsResult;
+import com.example.smartcity30.fragment.News.viewPagerFragment.CulturalTourismFragment;
+import com.example.smartcity30.fragment.News.viewPagerFragment.EconomicDevelopmentFragment;
+import com.example.smartcity30.fragment.News.viewPagerFragment.PolicyAnalyzingFragment;
+import com.example.smartcity30.fragment.News.viewPagerFragment.TechnologicalInnovationFragment;
+import com.example.smartcity30.fragment.News.viewPagerFragment.ThematicFocusFragment;
+import com.example.smartcity30.fragment.News.viewPagerFragment.TodayNewsFragment;
 import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 import com.youth.banner.Banner;
 import com.youth.banner.config.IndicatorConfig;
 import com.youth.banner.indicator.CircleIndicator;
@@ -61,7 +69,6 @@ public class NewsFragment extends Fragment {
         vp2_news_fragment = view.findViewById(R.id.vp2_news_fragment);
 
 
-        initViewPager2AndTabLayout();
     }
 
     private void getNewsInfoNetworkRequest() {
@@ -89,6 +96,7 @@ public class NewsFragment extends Fragment {
                         newsCategoryList.add(newsCategoryDataList.get(i).getName());
                         newsTypeList.add(newsCategoryDataList.get(i).getId());
                     }
+                    initViewPager2AndTabLayout();
                 }
             }
 
@@ -105,7 +113,7 @@ public class NewsFragment extends Fragment {
             NewsDetailsResult newsDetailsResult;
 
             @Override
-            public void onResponse(Call<NewsDetailsResult> call, Response<NewsDetailsResult> response) {
+            public void onResponse(@NonNull Call<NewsDetailsResult> call, @NonNull Response<NewsDetailsResult> response) {
                 if (response.code() == 200) {
                     newsDetailsResult = response.body();
                     if (newsDetailsResult != null) {
@@ -119,7 +127,7 @@ public class NewsFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<NewsDetailsResult> call, Throwable throwable) {
+            public void onFailure(@NonNull Call<NewsDetailsResult> call, @NonNull Throwable throwable) {
 
             }
         });
@@ -144,7 +152,38 @@ public class NewsFragment extends Fragment {
     }
 
     private void initViewPager2AndTabLayout() {
+        TodayNewsFragment todayNewsFragment = TodayNewsFragment.newInstance(newsTypeList.get(0));
+        ThematicFocusFragment thematicFocusFragment = ThematicFocusFragment.newInstance(newsTypeList.get(1));
+        PolicyAnalyzingFragment policyAnalyzingFragment = PolicyAnalyzingFragment.newInstance(newsTypeList.get(2));
+        EconomicDevelopmentFragment economicDevelopmentFragment = EconomicDevelopmentFragment.newInstance(newsTypeList.get(3));
+        CulturalTourismFragment culturalTourismFragment = CulturalTourismFragment.newInstance(newsTypeList.get(4));
+        TechnologicalInnovationFragment technologicalInnovationFragment = TechnologicalInnovationFragment.newInstance(newsTypeList.get(5));
 
+        newsCategoryFragmentList.add(todayNewsFragment);
+        newsCategoryFragmentList.add(thematicFocusFragment);
+        newsCategoryFragmentList.add(policyAnalyzingFragment);
+        newsCategoryFragmentList.add(economicDevelopmentFragment);
+        newsCategoryFragmentList.add(culturalTourismFragment);
+        newsCategoryFragmentList.add(technologicalInnovationFragment);
+        vp2_news_fragment.setAdapter(new FragmentStateAdapter(requireActivity().getSupportFragmentManager(), getLifecycle()) {
+            @NonNull
+            @Override
+            public Fragment createFragment(int position) {
+                return newsCategoryFragmentList.get(position);
+            }
+
+            @Override
+            public int getItemCount() {
+                return newsTypeList.size();
+            }
+        });
+
+        new TabLayoutMediator(tab_layout_news_fragment_tab, vp2_news_fragment, true, new TabLayoutMediator.TabConfigurationStrategy() {
+            @Override
+            public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
+                tab.setText(newsCategoryList.get(position));
+            }
+        }).attach();
 
     }
 }

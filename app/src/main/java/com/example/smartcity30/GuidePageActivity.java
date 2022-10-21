@@ -56,6 +56,14 @@ public class GuidePageActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         });
+        btn_guide_enter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(GuidePageActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     private void initBanner() {

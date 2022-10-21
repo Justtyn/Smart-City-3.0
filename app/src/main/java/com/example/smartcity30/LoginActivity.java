@@ -11,12 +11,14 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.smartcity30.bean.LoginInfo;
 import com.example.smartcity30.bean.LoginResult;
 import com.example.smartcity30.bean.RegisterResult;
+import com.example.smartcity30.utils.SharedPreferencesUtil;
 import com.google.gson.Gson;
 
 import java.util.Objects;
@@ -36,9 +38,17 @@ public class LoginActivity extends AppCompatActivity {
     public EditText et_login_password;
     public Button btn_login_login;
     public Button btn_login_register;
+    public CheckBox ckb_login_save_info;
     public String userName, passWord, TOKEN, loginRequestMsg;
+
+//    public String userName = "jzh";
+//    public String passWord = "123456";
+//    public String TOKEN, loginRequestMsg;
+
     public int loginRequestCode;
     public String BASE_URL = "http://124.93.196.45:10001";
+    public String userNameFromSP;
+    public String passWordFromSP;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,14 +59,20 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        getUserInfoBySPUtil();
         initView();
     }
+
 
     private void initView() {
         et_login_username = findViewById(R.id.et_login_username);
         et_login_password = findViewById(R.id.et_login_password);
+        ckb_login_save_info = findViewById(R.id.ckb_login_save_info);
         btn_login_login = findViewById(R.id.btn_login_login);
         btn_login_register = findViewById(R.id.btn_login_register);
+
+        et_login_username.setText(userNameFromSP);
+        et_login_password.setText(passWordFromSP);
 
         et_login_username.addTextChangedListener(new TextWatcher() {
             @Override
@@ -97,6 +113,9 @@ public class LoginActivity extends AppCompatActivity {
                 if (userName != null && passWord != null) {
                     loginNetworkRequest();
                 } else {
+                    userName = et_login_username.getText().toString();
+                    passWord = et_login_password.getText().toString();
+                    loginNetworkRequest();
                     if (userName == null) {
                         Toast.makeText(getApplicationContext(), "请输入用户名", Toast.LENGTH_SHORT).show();
                     }
@@ -104,6 +123,7 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "请输入密码", Toast.LENGTH_SHORT).show();
                     }
                 }
+
             }
         });
 
@@ -116,7 +136,20 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    private void saveUserInfoBySPUtil() {
+        SharedPreferencesUtil.putString(getApplicationContext(), "userName", userName);
+        SharedPreferencesUtil.putString(getApplicationContext(), "passWord", passWord);
+    }
+
+    private void getUserInfoBySPUtil() {
+        userNameFromSP = SharedPreferencesUtil.getString(getApplicationContext(), "userName", "");
+        passWordFromSP = SharedPreferencesUtil.getString(getApplicationContext(), "passWord", "");
+    }
+
     private void loginNetworkRequest() {
+        if (ckb_login_save_info.isChecked()) {
+            saveUserInfoBySPUtil();
+        }
         Retrofit retrofit = new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
                 .baseUrl(BASE_URL)
@@ -155,4 +188,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
+
 }

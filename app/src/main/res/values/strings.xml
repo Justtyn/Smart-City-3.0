@@ -16,8 +16,9 @@
     <string name="back_logo"><![CDATA[<]]></string>
     <string name="gender">Gender ：</string>
     <string name="service_name">Service Name</string>
-    <string name="this_is_news_title">This is News Title.</string>
+    <string name="this_is_news_title">This is News Title.This is News Title.This is News Title.This is News Title.This is News Title.This is News Title.This is News Title.</string>
     <string name="news_image">News Image</string>
-    <string name="this_is_news_content">This is News Content.</string>
+    <string name="this_is_news_content">This is News Content.This is News Content.This is News Content.This is News Content.This is News Content.This is News Content.This is News Content.This is News Content.This is News Content.This is News Content.</string>
     <string name="news_banner">News Banner</string>
+    <string name="save_username_password"><![CDATA[Save Username & Password]]></string>
 </resources>
