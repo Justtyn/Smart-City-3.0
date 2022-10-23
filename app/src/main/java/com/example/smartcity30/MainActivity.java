@@ -7,16 +7,14 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
 import com.example.smartcity30.fragment.HomeFragment;
 import com.example.smartcity30.fragment.NewsFragment;
-import com.example.smartcity30.fragment.PartyconstructFragment;
+import com.example.smartcity30.fragment.PartyConstructFragment;
 import com.example.smartcity30.fragment.PersonalCenterFragment;
 import com.example.smartcity30.fragment.ServiceFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -99,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
                             fragment = new ServiceFragment();
                             break;
                         case 2:
-                            fragment = new PartyconstructFragment();
+                            fragment = new PartyConstructFragment();
                             break;
                         case 3:
                             fragment = new NewsFragment();

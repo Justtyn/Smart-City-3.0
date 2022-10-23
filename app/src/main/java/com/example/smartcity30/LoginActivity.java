@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -34,16 +35,14 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LoginActivity extends AppCompatActivity {
 
+    private static final String TAG = "LoginActivity";
+
     public EditText et_login_username;
     public EditText et_login_password;
     public Button btn_login_login;
     public Button btn_login_register;
     public CheckBox ckb_login_save_info;
     public String userName, passWord, TOKEN, loginRequestMsg;
-
-//    public String userName = "jzh";
-//    public String passWord = "123456";
-//    public String TOKEN, loginRequestMsg;
 
     public int loginRequestCode;
     public String BASE_URL = "http://124.93.196.45:10001";
@@ -127,23 +126,22 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        btn_login_register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-                startActivity(intent);
-            }
+        btn_login_register.setOnClickListener(v -> {
+            Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+            startActivity(intent);
         });
     }
 
     private void saveUserInfoBySPUtil() {
         SharedPreferencesUtil.putString(getApplicationContext(), "userName", userName);
         SharedPreferencesUtil.putString(getApplicationContext(), "passWord", passWord);
+
     }
 
     private void getUserInfoBySPUtil() {
         userNameFromSP = SharedPreferencesUtil.getString(getApplicationContext(), "userName", "");
         passWordFromSP = SharedPreferencesUtil.getString(getApplicationContext(), "passWord", "");
+
     }
 
     private void loginNetworkRequest() {
@@ -170,6 +168,7 @@ public class LoginActivity extends AppCompatActivity {
                         loginRequestMsg = loginResult.getMsg();
                         if (loginRequestCode == 200) {
                             TOKEN = loginResult.getToken();
+                            SharedPreferencesUtil.putString(getApplicationContext(), "TOKEN", TOKEN);
                             Toast.makeText(getApplicationContext(), "登录成功", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             intent.putExtra("TOKEN", TOKEN);

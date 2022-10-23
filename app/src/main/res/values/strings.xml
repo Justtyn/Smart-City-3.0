@@ -30,4 +30,5 @@
     <string name="my_wallet">我的钱包</string>
     <string name="my_points">我的积分</string>
     <string name="feedback">意见反馈</string>
+    <string name="my_username">我的昵称</string>
 </resources>

@@ -193,7 +193,7 @@ public class HomeFragment extends Fragment {
 
     private void initRecyclerView() {
         HomeFragmentServiceGridListAdapter homeFragmentServiceGridListAdapter = new HomeFragmentServiceGridListAdapter(rowsBeanList);
-        rv_main_suggest_service_list.setLayoutManager(new GridLayoutManager(this.getActivity(), 4));
+        rv_main_suggest_service_list.setLayoutManager(new GridLayoutManager(this.getActivity(), 5));
         rv_main_suggest_service_list.setAdapter(homeFragmentServiceGridListAdapter);
     }
 
