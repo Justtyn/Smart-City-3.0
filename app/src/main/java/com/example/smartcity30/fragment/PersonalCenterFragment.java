@@ -7,60 +7,43 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.smartcity30.R;
+import com.example.smartcity30.utils.ImageViewRadiusFormUtil;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link PersonalCenterFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class PersonalCenterFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public PersonalCenterFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment PersonalCenterFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static PersonalCenterFragment newInstance(String param1, String param2) {
-        PersonalCenterFragment fragment = new PersonalCenterFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    public View view;
+    public ImageViewRadiusFormUtil iv_personal_avatar;
+    public TextView tv_personal_username;
+    public Button btn_personal_information;
+    public Button btn_list_of_orders;
+    public Button btn_my_wallet;
+    public Button btn_my_points;
+    public Button btn_feedback;
+    public Button btn_change_the_password;
+    public Button btn_sign_out;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        view = inflater.inflate(R.layout.fragment_personal_center, container, false);
+        initView();
+
+        return view;
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_personal_center, container, false);
+    private void initView() {
+        iv_personal_avatar = view.findViewById(R.id.iv_personal_avatar);
+        tv_personal_username = view.findViewById(R.id.tv_personal_username);
+        btn_personal_information = view.findViewById(R.id.btn_personal_information);
+        btn_list_of_orders = view.findViewById(R.id.btn_list_of_orders);
+        btn_my_wallet = view.findViewById(R.id.btn_my_wallet);
+        btn_my_points = view.findViewById(R.id.btn_my_points);
+        btn_feedback = view.findViewById(R.id.btn_feedback);
+        btn_change_the_password = view.findViewById(R.id.btn_change_the_password);
+        btn_sign_out = view.findViewById(R.id.btn_sign_out);
     }
 }

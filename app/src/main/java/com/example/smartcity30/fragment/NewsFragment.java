@@ -43,22 +43,22 @@ public class NewsFragment extends Fragment {
     private static final String TAG = "NewsFragment";
     public String BASE_URL = "http://124.93.196.45:10001";
     public View view;
-    public Banner banner_news_fragment_ad;
+    public Banner<String, NewsFragmentBannerAdapter> banner_news_fragment_ad;
     public TabLayout tab_layout_news_fragment_tab;
     public ViewPager2 vp2_news_fragment;
     public List<String> newsCategoryList = new ArrayList<>();
     public List<Integer> newsTypeList = new ArrayList<>();
     public List<NewsDetailsResult.RowsBean> newsDetailsDataList;
     public List<String> newsDetailsImageUrlList = new ArrayList<>();
-    public NewsFragmentBannerAdapter newsFragmentBannerAdapter;
+    //    public NewsFragmentBannerAdapter newsFragmentBannerAdapter;
     public List<Fragment> newsCategoryFragmentList = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_news, container, false);
 
-        getNewsInfoNetworkRequest();
         initView();
+        getNewsInfoNetworkRequest();
 
         return view;
     }
@@ -67,8 +67,6 @@ public class NewsFragment extends Fragment {
         banner_news_fragment_ad = view.findViewById(R.id.banner_news_fragment_ad);
         tab_layout_news_fragment_tab = view.findViewById(R.id.tab_layout_news_fragment_tab);
         vp2_news_fragment = view.findViewById(R.id.vp2_news_fragment);
-
-
     }
 
     private void getNewsInfoNetworkRequest() {
@@ -135,7 +133,7 @@ public class NewsFragment extends Fragment {
 
     private void initBanner() {
 
-        banner_news_fragment_ad.setAdapter(new NewsFragmentBannerAdapter(newsDetailsImageUrlList, newsDetailsDataList, requireActivity()));
+        banner_news_fragment_ad.setAdapter(new NewsFragmentBannerAdapter(newsDetailsImageUrlList, requireActivity()));
         // 给 banner 添加生命周期观察者 自动管理 banner 的生命周期
         banner_news_fragment_ad.addBannerLifecycleObserver(requireActivity());
 //        // 设置 banner 轮播指示器

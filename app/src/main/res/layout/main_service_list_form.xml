@@ -3,12 +3,12 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="10dp">
+    android:padding="5dp">
 
     <ImageView
         android:id="@+id/iv_service_item_form_image"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:background="@drawable/imageview_radius_form"
         android:contentDescription="@string/service_name"
         android:padding="10dp"
@@ -21,6 +21,6 @@
         android:layout_gravity="center_horizontal"
         android:text="@string/service_name"
         android:textColor="@color/black"
-        android:textSize="17sp" />
+        android:textSize="10sp" />
 
 </LinearLayout>

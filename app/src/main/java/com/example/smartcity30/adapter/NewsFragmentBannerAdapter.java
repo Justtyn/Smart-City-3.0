@@ -23,9 +23,8 @@ public class NewsFragmentBannerAdapter extends BannerAdapter<String, NewsFragmen
     public List<NewsDetailsResult.RowsBean> newsDetailsList;
     public Context context;
 
-    public NewsFragmentBannerAdapter(List<String> data, List<NewsDetailsResult.RowsBean> newsDetailsList, Context context) {
+    public NewsFragmentBannerAdapter(List<String> data, Context context) {
         super(data);
-        this.newsDetailsList = newsDetailsList;
         this.context = context;
     }
 
@@ -40,7 +39,7 @@ public class NewsFragmentBannerAdapter extends BannerAdapter<String, NewsFragmen
     @Override
     public void onBindView(ImageHolder imageHolder, String s, int i, int i1) {
 
-        Glide.with(imageHolder.itemView.getContext()).load(BASE_URL + newsDetailsList.get(i).getCover()).error(R.mipmap.android_test_image).into(imageHolder.iv_news_banner_form);
+        Glide.with(imageHolder.itemView.getContext()).load(BASE_URL + mDatas.get(i)).error(R.mipmap.android_test_image).into(imageHolder.iv_news_banner_form);
 
     }
 

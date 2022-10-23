@@ -1,6 +1,8 @@
 package com.example.smartcity30;
 
 import com.example.smartcity30.bean.GetAllServiceResult;
+import com.example.smartcity30.bean.GetUserInfoResult;
+import com.example.smartcity30.bean.HomeFragmentBannerInfoResult;
 import com.example.smartcity30.bean.NewsDetailsResult;
 import com.example.smartcity30.bean.LoginResult;
 import com.example.smartcity30.bean.NewsCategoryResult;
@@ -10,6 +12,7 @@ import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 
@@ -32,5 +35,11 @@ public interface ApiService {
 
     @GET("/prod-api/press/press/list")
     Call<NewsDetailsResult> getNewsDetails();
+
+    @GET("/prod-api/api/rotation/list")
+    Call<HomeFragmentBannerInfoResult> getHomeFragmentBannerInfo(@Query("type") int type);
+
+    @GET("/prod-api/api/common/user/getInfo")
+    Call<GetUserInfoResult> getUserInfo(@Header("Authorization") String TOKEN);
 
 }

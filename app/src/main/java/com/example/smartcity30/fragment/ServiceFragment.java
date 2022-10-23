@@ -41,8 +41,8 @@ public class ServiceFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_service, container, false);
 
-        getAllServiceNetworkRequest();
         initView();
+        getAllServiceNetworkRequest();
         return view;
     }
 
@@ -73,12 +73,6 @@ public class ServiceFragment extends Fragment {
                     GetAllServiceResult getAllServiceResult = response.body();
                     if (getAllServiceResult != null) {
                         allServiceDataList = getAllServiceResult.getRows();
-                    }
-                    for (int i = 0; i < allServiceDataList.size(); i++) {
-                        GetAllServiceResult.RowsBean rowsBean = new GetAllServiceResult.RowsBean();
-                        rowsBean.setServiceName(allServiceDataList.get(i).getServiceName());
-                        rowsBean.setImgUrl(allServiceDataList.get(i).getImgUrl());
-                        Log.d(TAG, "onResponse: " + allServiceDataList.get(i).getServiceName());
                     }
                     initRecyclerView();
                 }

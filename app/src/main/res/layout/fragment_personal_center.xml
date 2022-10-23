@@ -1,14 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".fragment.PersonalCenterFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="170dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:ignore="UseCompoundDrawables">
 
-</FrameLayout>
+        <com.example.smartcity30.utils.ImageViewRadiusFormUtil
+            android:id="@+id/iv_personal_avatar"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:contentDescription="@string/avatar"
+            android:src="@mipmap/avatar" />
+
+        <TextView
+            android:id="@+id/tv_personal_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/user_name"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="#CEDBD5D5"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_personal_information"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_right_24"
+            android:gravity="start|center"
+            android:paddingStart="20dp"
+            android:text="@string/personal_information"
+            android:textSize="17sp"
+            tools:ignore="RtlSymmetry" />
+
+        <Button
+            android:id="@+id/btn_list_of_orders"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_right_24"
+            android:gravity="start|center"
+            android:paddingStart="20dp"
+            android:text="@string/list_of_orders"
+            android:textSize="17sp"
+            tools:ignore="RtlSymmetry" />
+
+        <Button
+            android:id="@+id/btn_my_wallet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_right_24"
+            android:gravity="start|center"
+            android:paddingStart="20dp"
+            android:text="@string/my_wallet"
+            android:textSize="17sp"
+            tools:ignore="RtlSymmetry" />
+
+        <Button
+            android:id="@+id/btn_my_points"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_right_24"
+            android:gravity="start|center"
+            android:paddingStart="20dp"
+            android:text="@string/my_points"
+            android:textSize="17sp"
+            tools:ignore="RtlSymmetry" />
+
+        <Button
+            android:id="@+id/btn_feedback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_right_24"
+            android:gravity="start|center"
+            android:paddingStart="20dp"
+            android:text="@string/feedback"
+            android:textSize="17sp"
+            tools:ignore="RtlSymmetry" />
+
+        <Button
+            android:id="@+id/btn_change_the_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_right_24"
+            android:gravity="start|center"
+            android:paddingStart="20dp"
+            android:text="@string/change_the_password"
+            android:textSize="17sp"
+            tools:ignore="RtlSymmetry" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_sign_out"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="#E9FF3300"
+        android:text="@string/sign_out"
+        android:textColor="@color/white"
+        android:textSize="17sp" />
+
+</LinearLayout>
