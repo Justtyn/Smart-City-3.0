@@ -61,27 +61,12 @@ public class PersonalCenterPersonalInfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_personal_center_personal_info);
         getTokenBySPUtil();
         personalCenterNetworkRequest();
-//        getUserInfoByIntent();
-
-//        initView();
     }
 
     private void getTokenBySPUtil() {
         TOKEN = SharedPreferencesUtil.getString(getApplicationContext(), "TOKEN", "");
         Log.d(TAG, "getTokenBySPUtil: " + TOKEN);
     }
-
-//    private void getUserInfoByIntent() {
-//        Intent intent = getIntent();
-//        userName = intent.getStringExtra("userName");
-//        email = intent.getStringExtra("email");
-//        phoneNum = intent.getStringExtra("phoneNum");
-//        sex = intent.getStringExtra("sex");
-//        idCard = intent.getStringExtra("idCard");
-//        userId = intent.getStringExtra("userId");
-//
-//        Log.d(TAG, "getUserInfoByIntent: " + userId + userName + email + phoneNum + sex + idCard);
-//    }
 
     public void personalCenterNetworkRequest() {
         Retrofit retrofit = new Retrofit.Builder()

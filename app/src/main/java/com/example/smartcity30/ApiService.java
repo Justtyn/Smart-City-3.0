@@ -2,6 +2,7 @@ package com.example.smartcity30;
 
 import com.example.smartcity30.bean.ChangeUserInfoResult;
 import com.example.smartcity30.bean.GetAllServiceResult;
+import com.example.smartcity30.bean.GetParkListResult;
 import com.example.smartcity30.bean.GetUserInfoResult;
 import com.example.smartcity30.bean.HomeFragmentBannerInfoResult;
 import com.example.smartcity30.bean.NewsDetailsResult;
@@ -46,6 +47,8 @@ public interface ApiService {
     Call<GetUserInfoResult> getUserInfo(@Header("Authorization") String TOKEN);
 
     @PUT("/prod-api/api/common/user")
-    Call<ChangeUserInfoResult> changeUserInfo(@Header("Authorization") String TOKEN,@Body RequestBody body);
+    Call<ChangeUserInfoResult> changeUserInfo(@Header("Authorization") String TOKEN, @Body RequestBody body);
 
+    @GET("/prod-api/api/park/lot/list")
+    Call<GetParkListResult> getParkListInfo(@Query("parkName") int parkName);
 }
