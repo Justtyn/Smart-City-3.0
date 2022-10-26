@@ -8,6 +8,7 @@
     tools:context=".PersonalCenterPersonalInfoActivity">
 
     <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tb_user_info_top_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#B8B9BD"
@@ -39,6 +40,7 @@
                 android:textSize="19sp" />
 
             <EditText
+                android:id="@+id/et_user_info_userID"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.5"
@@ -47,7 +49,8 @@
                 android:enabled="false"
                 android:gravity="end"
                 android:hint="用户ID"
-                android:textSize="19sp" />
+                android:textSize="19sp"
+                tools:ignore="TextFields" />
 
         </LinearLayout>
 
@@ -74,11 +77,13 @@
                 android:textSize="19sp" />
 
             <EditText
+                android:id="@+id/et_user_info_username"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.5"
                 android:autofillHints="User Name"
                 android:background="@drawable/et_empty_form"
+                android:enabled="false"
                 android:gravity="end"
                 android:hint="请输入昵称"
                 android:inputType="text"
@@ -109,25 +114,27 @@
                 android:textSize="19sp" />
 
             <RadioGroup
+                android:id="@+id/rg_user_info_sex"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.5"
                 android:gravity="end"
                 android:orientation="horizontal">
 
-
                 <RadioButton
-                    android:id="@+id/rb_register_man_0"
+                    android:id="@+id/rb_user_info_man_0"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
                     android:text="Man" />
 
                 <RadioButton
-                    android:id="@+id/rb_register_woman_1"
+                    android:id="@+id/rb_user_info_woman_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
+                    android:checked="false"
+                    android:enabled="false"
                     android:text="Woman" />
             </RadioGroup>
 
@@ -156,14 +163,16 @@
                 android:textSize="19sp" />
 
             <EditText
+                android:id="@+id/et_user_info_phone_number"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.5"
                 android:autofillHints="Phone Number"
                 android:background="@drawable/et_empty_form"
+                android:enabled="false"
                 android:gravity="end"
                 android:hint="请输入电话号码"
-                android:inputType="number"
+                android:inputType="phone"
                 android:textSize="19sp" />
 
         </LinearLayout>
@@ -192,11 +201,13 @@
                 android:textSize="19sp" />
 
             <EditText
+                android:id="@+id/et_user_info_email"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.5"
                 android:autofillHints="Email"
                 android:background="@drawable/et_empty_form"
+                android:enabled="false"
                 android:gravity="end"
                 android:hint="请输入Email"
                 android:inputType="textEmailAddress"
@@ -227,11 +238,13 @@
                 android:textSize="19sp" />
 
             <EditText
+                android:id="@+id/et_user_info_id_card"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.5"
                 android:autofillHints="ID Card"
                 android:background="@drawable/et_empty_form"
+                android:enabled="false"
                 android:gravity="end"
                 android:hint="请输入身份证"
                 android:inputType="number"
@@ -248,6 +261,19 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/btn_user_info_save_info"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp"
+        android:text="保存"
+        android:textColor="@color/black"
+        android:textSize="17sp" />
+
+    <Button
+        android:id="@+id/btn_user_info_change_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
@@ -258,12 +284,13 @@
         android:textSize="17sp" />
 
     <Button
+        android:id="@+id/btn_user_info_clear_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:text="清空"
+        android:visibility="gone"
         android:textSize="17sp" />
-
 
 </LinearLayout>

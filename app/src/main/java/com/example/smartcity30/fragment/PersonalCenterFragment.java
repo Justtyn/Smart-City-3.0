@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.renderscript.Sampler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -91,7 +92,7 @@ public class PersonalCenterFragment extends Fragment {
             intent.putExtra("phoneNum", phoneNum);
             intent.putExtra("sex", sex);
             intent.putExtra("idCard", idCard);
-            intent.putExtra("userId", userId);
+            intent.putExtra("userId", String.valueOf(userId));
             startActivity(intent);
         });
         btn_list_of_orders.setOnClickListener(new View.OnClickListener() {
@@ -139,7 +140,7 @@ public class PersonalCenterFragment extends Fragment {
         });
     }
 
-    private void personalCenterNetworkRequest() {
+    public void personalCenterNetworkRequest() {
         Retrofit retrofit = new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
                 .baseUrl(BASE_URL)

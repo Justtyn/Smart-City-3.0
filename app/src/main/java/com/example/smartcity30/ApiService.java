@@ -1,5 +1,6 @@
 package com.example.smartcity30;
 
+import com.example.smartcity30.bean.ChangeUserInfoResult;
 import com.example.smartcity30.bean.GetAllServiceResult;
 import com.example.smartcity30.bean.GetUserInfoResult;
 import com.example.smartcity30.bean.HomeFragmentBannerInfoResult;
@@ -15,6 +16,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Query;
 
 public interface ApiService {
@@ -42,5 +44,8 @@ public interface ApiService {
 
     @GET("/prod-api/api/common/user/getInfo")
     Call<GetUserInfoResult> getUserInfo(@Header("Authorization") String TOKEN);
+
+    @PUT("/prod-api/api/common/user")
+    Call<ChangeUserInfoResult> changeUserInfo(@Header("Authorization") String TOKEN,@Body RequestBody body);
 
 }
