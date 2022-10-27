@@ -44,7 +44,7 @@ public interface ApiService {
     Call<HomeFragmentBannerInfoResult> getHomeFragmentBannerInfo(@Query("type") int type);
 
     @GET("/prod-api/api/common/user/getInfo")
-    Call<GetUserInfoResult> getUserInfo(@Header("Authorization") String TOKEN);
+    Call<GetUserInfoResult> getUserInfo(@Header("Authorization") String TOKENd);
 
     @PUT("/prod-api/api/common/user")
     Call<ChangeUserInfoResult> changeUserInfo(@Header("Authorization") String TOKEN, @Body RequestBody body);
