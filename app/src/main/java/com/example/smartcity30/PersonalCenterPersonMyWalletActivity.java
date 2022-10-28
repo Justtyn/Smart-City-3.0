@@ -5,6 +5,9 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -79,6 +82,30 @@ public class PersonalCenterPersonMyWalletActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 tv_my_wallet_deposit_amount.setText("1000");
+            }
+        });
+        et_my_wallet_deposit_amount_other.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+        
+        // 软键盘右下角键监听
+        et_my_wallet_deposit_amount_other.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                return false;
             }
         });
     }

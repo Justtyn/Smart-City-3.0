@@ -127,6 +127,7 @@
                 android:textSize="20sp" />
 
             <EditText
+                android:imeOptions="actionDone"
                 android:id="@+id/et_my_wallet_deposit_amount_other"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
