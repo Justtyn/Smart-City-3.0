@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ServiceMainActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tb_service_main_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#B8B9BD"
+        app:navigationIcon="@drawable/ic_baseline_chevron_left_24"
+        app:title="服务页" />
+
+    <HorizontalScrollView
+        android:id="@+id/horizontal_sv_service_main_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_layout_service_main_activity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </HorizontalScrollView>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/vp2_service_main_activity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

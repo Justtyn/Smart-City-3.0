@@ -1,5 +1,6 @@
 package com.example.smartcity30;
 
+import com.example.smartcity30.bean.AmountsChangesInfoResult;
 import com.example.smartcity30.bean.ChangeUserInfoResult;
 import com.example.smartcity30.bean.GetAllServiceResult;
 import com.example.smartcity30.bean.GetParkListResult;
@@ -54,6 +55,10 @@ public interface ApiService {
     Call<GetParkListResult> getParkListInfo(@Query("parkName") int parkName);
 
     @POST("/prod-api/api/park/recharge/pay")
-    Call<WalletRechargeResult> walletRecharge(@Query("money") int money,@Query("payType") String payType);
+    Call<WalletRechargeResult> walletRecharge(@Header("Authorization") String TOKEN, @Query("money") int money);
+
+    @GET("/prod-api/api/common/balance/list")
+    Call<AmountsChangesInfoResult> amountsChangesInfo(@Header("Authorization") String TOKEN);
+
 
 }

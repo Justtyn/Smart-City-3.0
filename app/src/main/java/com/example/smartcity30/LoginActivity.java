@@ -135,13 +135,11 @@ public class LoginActivity extends AppCompatActivity {
     private void saveUserInfoBySPUtil() {
         SharedPreferencesUtil.putString(getApplicationContext(), "userName", userName);
         SharedPreferencesUtil.putString(getApplicationContext(), "passWord", passWord);
-
     }
 
     private void getUserInfoBySPUtil() {
         userNameFromSP = SharedPreferencesUtil.getString(getApplicationContext(), "userName", "");
         passWordFromSP = SharedPreferencesUtil.getString(getApplicationContext(), "passWord", "");
-
     }
 
     private void loginNetworkRequest() {

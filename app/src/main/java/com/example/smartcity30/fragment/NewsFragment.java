@@ -163,6 +163,7 @@ public class NewsFragment extends Fragment {
         newsCategoryFragmentList.add(economicDevelopmentFragment);
         newsCategoryFragmentList.add(culturalTourismFragment);
         newsCategoryFragmentList.add(technologicalInnovationFragment);
+
         vp2_news_fragment.setAdapter(new FragmentStateAdapter(requireActivity().getSupportFragmentManager(), getLifecycle()) {
             @NonNull
             @Override

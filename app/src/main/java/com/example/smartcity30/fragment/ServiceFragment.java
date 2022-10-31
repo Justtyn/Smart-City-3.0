@@ -34,7 +34,7 @@ public class ServiceFragment extends Fragment {
     public View view;
     public List<GetAllServiceResult.RowsBean> allServiceDataList = new ArrayList<>();
     public SearchView sv_main_search;
-    public RecyclerView rv_main_fruit_list;
+    public RecyclerView rv_main_service_list;
     public String BASE_URL = "http://124.93.196.45:10001";
 
     @Override
@@ -48,14 +48,14 @@ public class ServiceFragment extends Fragment {
 
     private void initView() {
         sv_main_search = view.findViewById(R.id.sv_main_search);
-        rv_main_fruit_list = view.findViewById(R.id.rv_main_fruit_list);
+        rv_main_service_list = view.findViewById(R.id.rv_main_fruit_list);
 
     }
 
     private void initRecyclerView() {
         ServiceFragmentGridListAdapter serviceFragmentGridListAdapter = new ServiceFragmentGridListAdapter(allServiceDataList);
-        rv_main_fruit_list.setLayoutManager(new GridLayoutManager(this.getActivity(), 3));
-        rv_main_fruit_list.setAdapter(serviceFragmentGridListAdapter);
+        rv_main_service_list.setLayoutManager(new GridLayoutManager(this.getActivity(), 3));
+        rv_main_service_list.setAdapter(serviceFragmentGridListAdapter);
     }
 
     private void getAllServiceNetworkRequest() {

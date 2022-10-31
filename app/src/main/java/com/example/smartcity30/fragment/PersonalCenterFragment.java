@@ -6,7 +6,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import android.renderscript.Sampler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,9 +25,6 @@ import com.example.smartcity30.R;
 import com.example.smartcity30.bean.GetUserInfoResult;
 import com.example.smartcity30.utils.ImageViewRadiusFormUtil;
 import com.example.smartcity30.utils.SharedPreferencesUtil;
-
-import java.util.List;
-import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;

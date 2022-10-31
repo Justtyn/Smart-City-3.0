@@ -42,11 +42,11 @@
             android:textSize="20sp" />
 
         <Button
-            android:id="@+id/btn_my_wallet_recharge_logs"
+            android:id="@+id/btn_my_wallet_bill"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1.3"
-            android:text="充值记录"
+            android:text="账单"
             android:textSize="17sp" />
 
     </LinearLayout>

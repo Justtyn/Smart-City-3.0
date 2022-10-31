@@ -5,9 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -21,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.smartcity30.bean.WalletRechargeResult;
+import com.example.smartcity30.utils.SharedPreferencesUtil;
 
 import java.util.Objects;
 
@@ -32,12 +32,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class PersonalCenterPersonMyWalletActivity extends AppCompatActivity {
 
-    public String customAmount;
+    public String customAmount, TOKEN;
     public String BASE_URL = "http://124.93.196.45:10001";
     public static final String TAG = "PersonalCenterPersonMyW";
     public Toolbar tb_my_wallet_top_bar;
     public TextView tv_my_wallet_deposit_amount;
-    public Button btn_my_wallet_recharge_logs;
+    public Button btn_my_wallet_bill;
     public Button btn_my_wallet_deposit_amount_50;
     public Button btn_my_wallet_deposit_amount_100;
     public Button btn_my_wallet_deposit_amount_200;
@@ -55,14 +55,14 @@ public class PersonalCenterPersonMyWalletActivity extends AppCompatActivity {
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_center_person_my_wallet);
-
+        getTokenBySPUtil();
         initView();
     }
 
     private void initView() {
         tb_my_wallet_top_bar = findViewById(R.id.tb_my_wallet_top_bar);
         tv_my_wallet_deposit_amount = findViewById(R.id.tv_my_wallet_deposit_amount);
-        btn_my_wallet_recharge_logs = findViewById(R.id.btn_my_wallet_recharge_logs);
+        btn_my_wallet_bill = findViewById(R.id.btn_my_wallet_bill);
         btn_my_wallet_deposit_amount_50 = findViewById(R.id.btn_my_wallet_deposit_amount_50);
         btn_my_wallet_deposit_amount_100 = findViewById(R.id.btn_my_wallet_deposit_amount_100);
         btn_my_wallet_deposit_amount_200 = findViewById(R.id.btn_my_wallet_deposit_amount_200);
@@ -78,6 +78,13 @@ public class PersonalCenterPersonMyWalletActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+        btn_my_wallet_bill.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PersonalCenterPersonMyWalletActivity.this, MyWalletBillActivity.class);
+                startActivity(intent);
             }
         });
         btn_my_wallet_deposit_amount_50.setOnClickListener(new View.OnClickListener() {
@@ -121,24 +128,7 @@ public class PersonalCenterPersonMyWalletActivity extends AppCompatActivity {
             }
         });
 
-//        et_my_wallet_deposit_amount_other.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//                customAmount = Integer.parseInt(charSequence.toString());
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//                customAmount = Integer.parseInt(charSequence.toString());
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable editable) {
-//
-//            }
-//        });
         // 软键盘右下角键监听
-
         et_my_wallet_deposit_amount_other.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -157,18 +147,22 @@ public class PersonalCenterPersonMyWalletActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (rb_my_wallet_wechat_payment.isChecked()) {
                     Log.d(TAG, "onClick: " + "微信支付");
-                    walletRechargeNetworkRequest("微信");
+                    walletRechargeNetworkRequest();
                 }
                 if (rb_my_wallet_alipay_payment.isChecked()) {
                     Log.d(TAG, "onClick: " + "支付宝支付");
-                    walletRechargeNetworkRequest("支付宝");
+                    walletRechargeNetworkRequest();
                 }
             }
         });
     }
 
-    private void walletRechargeNetworkRequest(String payType) {
-        Log.d(TAG, "walletRechargeNetworkRequest: " + "Network Request");
+    private void getTokenBySPUtil() {
+        TOKEN = SharedPreferencesUtil.getString(getApplicationContext(), "TOKEN", "");
+        Log.d(TAG, "getTokenBySPUtil: " + TOKEN);
+    }
+
+    private void walletRechargeNetworkRequest() {
         Retrofit retrofit = new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
                 .baseUrl(BASE_URL)
@@ -176,7 +170,7 @@ public class PersonalCenterPersonMyWalletActivity extends AppCompatActivity {
 
         ApiService apiService = retrofit.create(ApiService.class);
 
-        Call<WalletRechargeResult> walletRechargeResultCall = apiService.walletRecharge(Integer.parseInt(customAmount), payType);
+        Call<WalletRechargeResult> walletRechargeResultCall = apiService.walletRecharge(TOKEN, Integer.parseInt(customAmount));
         walletRechargeResultCall.enqueue(new Callback<WalletRechargeResult>() {
             @Override
             public void onResponse(@NonNull Call<WalletRechargeResult> call, @NonNull Response<WalletRechargeResult> response) {
@@ -187,8 +181,9 @@ public class PersonalCenterPersonMyWalletActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "充值成功", Toast.LENGTH_SHORT).show();
                     tv_my_wallet_deposit_amount.setText("");
                     et_my_wallet_deposit_amount_other.setText("");
-                    rb_my_wallet_wechat_payment.setChecked(false);
-                    rb_my_wallet_alipay_payment.setChecked(false);
+//                    rb_my_wallet_wechat_payment.setChecked(false);
+//                    rb_my_wallet_alipay_payment.setChecked(false);
+                    rg_my_wallet_payment_methods.clearCheck();
                 }
 
             }
