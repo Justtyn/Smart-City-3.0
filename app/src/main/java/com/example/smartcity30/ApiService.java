@@ -9,6 +9,7 @@ import com.example.smartcity30.bean.HomeFragmentBannerInfoResult;
 import com.example.smartcity30.bean.NewsDetailsResult;
 import com.example.smartcity30.bean.LoginResult;
 import com.example.smartcity30.bean.NewsCategoryResult;
+import com.example.smartcity30.bean.ParkListInfoResult;
 import com.example.smartcity30.bean.RegisterResult;
 import com.example.smartcity30.bean.WalletRechargeResult;
 
@@ -17,7 +18,6 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
-import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Query;
@@ -52,7 +52,7 @@ public interface ApiService {
     Call<ChangeUserInfoResult> changeUserInfo(@Header("Authorization") String TOKEN, @Body RequestBody body);
 
     @GET("/prod-api/api/park/lot/list")
-    Call<GetParkListResult> getParkListInfo(@Query("parkName") int parkName);
+    Call<ParkListInfoResult> getParkListInfo();
 
     @POST("/prod-api/api/park/recharge/pay")
     Call<WalletRechargeResult> walletRecharge(@Header("Authorization") String TOKEN, @Query("money") int money);

@@ -6,6 +6,7 @@
     tools:context=".fragment.Service.WhereToParkFragment">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_where_to_park_park_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="10dp"

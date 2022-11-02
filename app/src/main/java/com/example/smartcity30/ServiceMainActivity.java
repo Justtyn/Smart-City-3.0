@@ -56,7 +56,7 @@ public class ServiceMainActivity extends AppCompatActivity {
     public TabLayout tabLayout;
     public ViewPager2 viewPager2;
     public int serviceIndex;
-    private Toolbar toolbar;
+    public Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

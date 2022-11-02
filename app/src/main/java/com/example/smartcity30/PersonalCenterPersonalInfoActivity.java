@@ -4,12 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -19,7 +17,6 @@ import android.widget.Toast;
 import com.example.smartcity30.bean.ChangeUserInfoInfo;
 import com.example.smartcity30.bean.ChangeUserInfoResult;
 import com.example.smartcity30.bean.GetUserInfoResult;
-import com.example.smartcity30.fragment.PersonalCenterFragment;
 import com.example.smartcity30.utils.SharedPreferencesUtil;
 import com.google.gson.Gson;
 
