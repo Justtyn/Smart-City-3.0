@@ -1,11 +1,14 @@
 package com.example.smartcity30.adapter;
 
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.smartcity30.R;
 import com.example.smartcity30.bean.ParkListInfoResult;
 
 import java.util.List;
@@ -21,24 +24,56 @@ public class ParkListAdapter extends RecyclerView.Adapter<ParkListAdapter.MyView
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        
-        return null;
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.where_to_park_list_form, parent, false);
+        return new MyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        holder.tv_where_to_park_list_parkName.setText(parkListDataList.get(position).getParkName());
+        holder.tv_where_to_park_list_distance.setText("距离 : " + parkListDataList.get(position).getDistance() + " KM");
+        holder.tv_where_to_park_list_vacancy.setText("剩余车位 : " + parkListDataList.get(position).getVacancy());
 
+        if (parkListDataList.get(position).getOpen().equals("Y")) {
+            holder.tv_where_to_park_list_whether_open.setText("对外开放 : " + "开放");
+        } else {
+            holder.tv_where_to_park_list_whether_open.setText("对外开放 : " + "暂未开放");
+        }
+
+        holder.tv_where_to_park_list_parkAddress.setText("地址 : " + parkListDataList.get(position).getAddress());
+        holder.tv_where_to_park_list_starting_price.setText("起步价 : " + parkListDataList.get(position).getRates());
+        holder.tv_where_to_park_list_priceCaps.setText("封顶价 : " + parkListDataList.get(position).getPriceCaps());
+        holder.tv_where_to_park_list_parkTotal.setText("车位总数 : " + parkListDataList.get(position).getAllPark());
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return parkListDataList.size();
     }
 
-    static class MyViewHolder extends RecyclerView.ViewHolder{
+    static class MyViewHolder extends RecyclerView.ViewHolder {
+
+        TextView tv_where_to_park_list_parkName;
+        TextView tv_where_to_park_list_distance;
+        TextView tv_where_to_park_list_vacancy;
+        TextView tv_where_to_park_list_whether_open;
+        TextView tv_where_to_park_list_parkAddress;
+        TextView tv_where_to_park_list_starting_price;
+        TextView tv_where_to_park_list_priceCaps;
+        TextView tv_where_to_park_list_parkTotal;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+
+            tv_where_to_park_list_parkName = itemView.findViewById(R.id.tv_where_to_park_list_parkName);
+            tv_where_to_park_list_distance = itemView.findViewById(R.id.tv_where_to_park_list_distance);
+            tv_where_to_park_list_vacancy = itemView.findViewById(R.id.tv_where_to_park_list_vacancy);
+            tv_where_to_park_list_whether_open = itemView.findViewById(R.id.tv_where_to_park_list_whether_open);
+            tv_where_to_park_list_parkAddress = itemView.findViewById(R.id.tv_where_to_park_list_parkAddress);
+            tv_where_to_park_list_starting_price = itemView.findViewById(R.id.tv_where_to_park_list_starting_price);
+            tv_where_to_park_list_priceCaps = itemView.findViewById(R.id.tv_where_to_park_list_priceCaps);
+            tv_where_to_park_list_parkTotal = itemView.findViewById(R.id.tv_where_to_park_list_parkTotal);
+
         }
     }
 }

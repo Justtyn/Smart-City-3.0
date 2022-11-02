@@ -37,7 +37,7 @@ public class WhereToParkFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_where_to_park, container, false);
         parkListNetworkRequest();
-        initRecyclerView();
+
         return view;
     }
 
@@ -55,6 +55,7 @@ public class WhereToParkFragment extends Fragment {
                     ParkListInfoResult parkListInfoResult = response.body();
                     if (parkListInfoResult != null) {
                         parkListDataList = parkListInfoResult.getRows();
+                        initRecyclerView();
                     }
                 }
             }
