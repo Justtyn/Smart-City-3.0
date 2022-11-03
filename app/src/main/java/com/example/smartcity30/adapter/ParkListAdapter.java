@@ -1,8 +1,10 @@
 package com.example.smartcity30.adapter;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -10,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.smartcity30.R;
 import com.example.smartcity30.bean.ParkListInfoResult;
+import com.example.smartcity30.fragment.Service.WhereToPark.ParkListParkingRecordsFragment;
 
 import java.util.List;
 
@@ -44,6 +47,14 @@ public class ParkListAdapter extends RecyclerView.Adapter<ParkListAdapter.MyView
         holder.tv_where_to_park_list_starting_price.setText("起步价 : " + parkListDataList.get(position).getRates());
         holder.tv_where_to_park_list_priceCaps.setText("封顶价 : " + parkListDataList.get(position).getPriceCaps());
         holder.tv_where_to_park_list_parkTotal.setText("车位总数 : " + parkListDataList.get(position).getAllPark());
+
+        holder.linearLayout_park_list.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), ParkListParkingRecordsFragment.class);
+                view.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -53,6 +64,7 @@ public class ParkListAdapter extends RecyclerView.Adapter<ParkListAdapter.MyView
 
     static class MyViewHolder extends RecyclerView.ViewHolder {
 
+        LinearLayout linearLayout_park_list;
         TextView tv_where_to_park_list_parkName;
         TextView tv_where_to_park_list_distance;
         TextView tv_where_to_park_list_vacancy;
@@ -65,6 +77,7 @@ public class ParkListAdapter extends RecyclerView.Adapter<ParkListAdapter.MyView
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            linearLayout_park_list = itemView.findViewById(R.id.linearLayout_park_list);
             tv_where_to_park_list_parkName = itemView.findViewById(R.id.tv_where_to_park_list_parkName);
             tv_where_to_park_list_distance = itemView.findViewById(R.id.tv_where_to_park_list_distance);
             tv_where_to_park_list_vacancy = itemView.findViewById(R.id.tv_where_to_park_list_vacancy);

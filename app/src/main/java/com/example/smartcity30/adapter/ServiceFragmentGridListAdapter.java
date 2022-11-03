@@ -1,5 +1,6 @@
 package com.example.smartcity30.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,7 +38,7 @@ public class ServiceFragmentGridListAdapter extends RecyclerView.Adapter<Service
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
         String serviceName = allServiceDataList.get(position).getServiceName();
         String BASE_URL = "http://124.93.196.45:10001";
 

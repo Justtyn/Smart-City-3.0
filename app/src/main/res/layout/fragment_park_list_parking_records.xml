@@ -4,18 +4,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".fragment.Service.WhereToParkFragment">
+    tools:context=".fragment.Service.WhereToPark.ParkListParkingRecordsFragment">
 
     <TextView
+        android:id="@+id/tv_park_records_parkName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
-        android:text="点击查看停车记录"
+        android:text="天津市邦仓储威物流停车场停车记录"
         android:textSize="17sp" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_where_to_park_park_list"
+        android:id="@+id/rv_park_records_park_info"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="10dp"
