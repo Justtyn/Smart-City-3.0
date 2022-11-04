@@ -1,5 +1,6 @@
 package com.example.smartcity30.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.smartcity30.R;
 import com.example.smartcity30.bean.ParkListInfoResult;
-import com.example.smartcity30.fragment.Service.WhereToPark.ParkListParkingRecordsFragment;
+import com.example.smartcity30.ParkListParkingRecordsActivity;
 
 import java.util.List;
 
@@ -32,7 +33,7 @@ public class ParkListAdapter extends RecyclerView.Adapter<ParkListAdapter.MyView
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.tv_where_to_park_list_parkName.setText(parkListDataList.get(position).getParkName());
         holder.tv_where_to_park_list_distance.setText("距离 : " + parkListDataList.get(position).getDistance() + " KM");
         holder.tv_where_to_park_list_vacancy.setText("剩余车位 : " + parkListDataList.get(position).getVacancy());
@@ -51,7 +52,11 @@ public class ParkListAdapter extends RecyclerView.Adapter<ParkListAdapter.MyView
         holder.linearLayout_park_list.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), ParkListParkingRecordsFragment.class);
+                Intent intent = new Intent(view.getContext(), ParkListParkingRecordsActivity.class);
+                String parkName = parkListDataList.get(position).getParkName();
+                String vacancy = parkListDataList.get(position).getVacancy();
+                intent.putExtra("parkName",parkName);
+                intent.putExtra("vacancy",vacancy);
                 view.getContext().startActivity(intent);
             }
         });

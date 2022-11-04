@@ -10,6 +10,7 @@ import com.example.smartcity30.bean.NewsDetailsResult;
 import com.example.smartcity30.bean.LoginResult;
 import com.example.smartcity30.bean.NewsCategoryResult;
 import com.example.smartcity30.bean.ParkListInfoResult;
+import com.example.smartcity30.bean.ParkListParkingRecordsResult;
 import com.example.smartcity30.bean.RegisterResult;
 import com.example.smartcity30.bean.WalletRechargeResult;
 
@@ -60,5 +61,6 @@ public interface ApiService {
     @GET("/prod-api/api/common/balance/list")
     Call<AmountsChangesInfoResult> amountsChangesInfo(@Header("Authorization") String TOKEN);
 
-
+    @GET("/prod-api/api/park/lot/record/list")
+    Call<ParkListParkingRecordsResult> getParkingRecordsInfo(@Query("parkName") String parkName);
 }

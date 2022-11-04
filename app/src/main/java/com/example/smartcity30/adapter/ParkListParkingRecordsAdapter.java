@@ -33,6 +33,12 @@ public class ParkListParkingRecordsAdapter extends RecyclerView.Adapter<ParkList
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        holder.tv_parking_records_plateNumber.setText("车牌号 : " + parkingRecordsList.get(position).getPlateNumber());
+        holder.tv_parking_records_monetary.setText("消费金额 : " + parkingRecordsList.get(position).getMonetary() + " 元");
+        holder.tv_parking_records_entryTime.setText("入场时间 : " + parkingRecordsList.get(position).getEntryTime());
+        holder.tv_parking_records_outTime.setText("出场时间 : " + parkingRecordsList.get(position).getOutTime());
+        holder.tv_parking_records_parkNum.setText("车位号 : " + parkingRecordsList.get(position).getParkNo());
+        holder.tv_parking_records_parkID.setText("停车场ID : " + parkingRecordsList.get(position).getLotId());
 
     }
 

@@ -38,6 +38,13 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".ParkListParkingRecordsActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".PersonalCenterFeedbackActivity"
             android:exported="false">
             <meta-data
@@ -71,14 +78,13 @@
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
-        </activity>
-        <activity
-            android:name=".PersonalCenterActivity.PersonalInfoActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
+        </activity> <!-- <activity -->
+        <!-- android:name=".PersonalCenterActivity.PersonalInfoActivity" -->
+        <!-- android:exported="false"> -->
+        <!-- <meta-data -->
+        <!-- android:name="android.app.lib_name" -->
+        <!-- android:value="" /> -->
+        <!-- </activity> -->
         <activity
             android:name=".RegisterActivity"
             android:exported="false">
