@@ -3,7 +3,6 @@ package com.example.smartcity30;
 import com.example.smartcity30.bean.AmountsChangesInfoResult;
 import com.example.smartcity30.bean.ChangeUserInfoResult;
 import com.example.smartcity30.bean.GetAllServiceResult;
-import com.example.smartcity30.bean.GetParkListResult;
 import com.example.smartcity30.bean.GetUserInfoResult;
 import com.example.smartcity30.bean.HomeFragmentBannerInfoResult;
 import com.example.smartcity30.bean.NewsDetailsResult;

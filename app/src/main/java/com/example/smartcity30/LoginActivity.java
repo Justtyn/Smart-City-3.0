@@ -43,7 +43,6 @@ public class LoginActivity extends AppCompatActivity {
     public Button btn_login_register;
     public CheckBox ckb_login_save_info;
     public String userName, passWord, TOKEN, loginRequestMsg;
-
     public int loginRequestCode;
     public String BASE_URL = "http://124.93.196.45:10001";
     public String userNameFromSP;
@@ -185,6 +184,5 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-
 
 }

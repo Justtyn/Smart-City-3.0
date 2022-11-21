@@ -15,13 +15,6 @@ public class SharedPreferencesUtil {
 
     private static SharedPreferences sharedPreferences;
 
-    /**
-     * 写入Boolean变量至sharedPreferences中
-     *
-     * @param context 上下文环境
-     * @param key     存储节点名称
-     * @param value   存储节点的值
-     */
     public static void putBoolean(Context context, String key, boolean value) {
         //(存储节点文件名称，读写方式)
         if (sharedPreferences == null) {
@@ -30,14 +23,6 @@ public class SharedPreferencesUtil {
         sharedPreferences.edit().putBoolean(key, value).apply();
     }
 
-    /**
-     * 读取boolean标识从sharedPreferences中
-     *
-     * @param context 上下文环境
-     * @param key     存储节点名称
-     * @param value   没有此节点的默认值
-     * @return 默认值或者此节点读取到的结果
-     */
     public static boolean getBoolean(Context context, String key, boolean value) {
         //(存储节点文件名称,读写方式)
         if (sharedPreferences == null) {

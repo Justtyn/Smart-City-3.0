@@ -41,7 +41,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class NewsFragment extends Fragment {
 
     private static final String TAG = "NewsFragment";
-    public String BASE_URL = "http://124.93.196.45:10001";
+        public String BASE_URL = "http://124.93.196.45:10001";
     public View view;
     public Banner<String, NewsFragmentBannerAdapter> banner_news_fragment_ad;
     public TabLayout tab_layout_news_fragment_tab;

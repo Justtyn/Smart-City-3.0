@@ -26,11 +26,11 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity {
 
     public Map<Integer, Fragment> fragmentMap = new HashMap<>();
-    public BottomNavigationView bottom_navigation_view_main;
     public int curFragmentIndex = 0;    // 默认 Fragment 索引
     public Fragment fragment;
     public FragmentTransaction fragmentTransaction;
     public FragmentManager fragmentManager;
+    public BottomNavigationView bottom_navigation_view_main;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
             @SuppressLint("NonConstantResourceId")
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
                 // 为每个底部栏按钮分配索引
                 switch (item.getItemId()) {
                     case R.id.item_nav_home:

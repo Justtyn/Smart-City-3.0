@@ -27,6 +27,7 @@
             android:paddingBottom="10dp">
 
             <com.youth.banner.Banner
+                app:banner_infinite_loop="true"
                 android:id="@+id/banner_home_fragment_ad"
                 android:layout_width="match_parent"
                 android:layout_height="180dp" />
@@ -42,13 +43,13 @@
                 app:drawableLeftCompat="@drawable/ic_baseline_location_city_24" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:background="@drawable/news_list_back_radius_form"
-                android:paddingStart="10dp"
                 android:id="@+id/rv_main_suggest_service_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/news_list_back_radius_form"
+                android:paddingStart="10dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
                 tools:ignore="RtlSymmetry" />
 
             <TextView

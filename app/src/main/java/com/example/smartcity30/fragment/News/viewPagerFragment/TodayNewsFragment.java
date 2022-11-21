@@ -3,6 +3,7 @@ package com.example.smartcity30.fragment.News.viewPagerFragment;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -53,6 +54,7 @@ public class TodayNewsFragment extends Fragment {
     private void initView() {
         rv_news_today_news = view.findViewById(R.id.rv_news_today_news);
         rv_news_today_news.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+//        rv_news_today_news.setLayoutManager(new GridLayoutManager(requireActivity().getApplicationContext(), 5));
         rv_news_today_news.setAdapter(new NewsFragmentNewsListAdapter(newsDetailsDataList, requireActivity()));
     }
 
